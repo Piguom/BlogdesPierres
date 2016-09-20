@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title Le blog des Pierre
+    %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = javascript_include_tag 'application'
+  %body.grey.lighten-5
+    - if current_user.nil? == false
+      - username = current_user.email.split('@')[0]
+      
+    #main
+      %header
+        .nav.valign-wrapper
+          .container          
+            .waves-effect.waves-light.btn.grey.darken-1= link_to 'Deconnexion', destroy_user_session_path, id: "deconnexion"
+            %h2#title.center-align.white-text Blog des Pierres
+            %br
+            %br
+            %h5#title.center-align.white-text Ajouter, modifier, supprimer vos propres articles. 
+            %h5#title.center-align.white-text Visualiser et commenter les articles des autres personnes ayant participer à l'exploitation de ce site web.
+
+        
+        %ul#side-nav.side-nav.fixed
+          %li#logo
+            %img.circle.responsive-img{:alt => "", :src => "http://dailygeekshow.com/wp-content/uploads/2015/08/une-pierre-bouche-artiste.jpg"}
+          #connexion
+            - if current_user.nil?
+              %p Vous n'êtes pas connecté !
+              #deconnxion.display:none
+              = link_to 'Connexion', new_user_session_path, class: "waves-effect waves-light btn red darken-1", id: "button-connexion"
+              
+              = link_to 'Inscription', new_user_registration_path, class: "waves-effect waves-light btn", id: "button-connexion"
+            - else
+              %h5="Bienvenue #{username}"
+              
+          %li.bold
+            =link_to 'Accueil', articles_path, class: "bold waves-effect waves-red"
+          - unless current_user.nil?
+            %li.bold
+              =link_to 'Mes articles', user_articles_path(current_user), class: "bold aves-effect waves-red"
+              
+      .container#site
+        .row
+          %p.notice 
+            = notice
+          %p.alert 
+            = alert
+          = yield
+  %footer.grey.lighten-3
+    .container
+      .row
+        .col.l4.s12
+          %h5.grey-text.text-darken-1 A propos
+          %p.grey-text Bienvenue sur notre toute première application web développée en ruby on Rails. Ce site a été réalisé dans le cadre d'un projet étudiant lors de notre 4ème année d'école d'ingénieurs à l'ESIEA.
+        .col.l4.s12
+          %h5.grey-text.text-darken-1 Sitemap
+          %p.grey-text Cette section est ici juste pour faire joli. Nous n'avons pas de sitemap. Voilà un bouton sur lequel cliquer.
+          %a.waves-effect.waves-light.btn Cliquez ici
+        .col.l4.s12
+          %h5.grey-text.text-darken-1 Nous suivre
+          %a.waves-effect.waves-light.btn{href: "https://github.com/piguom", target:"blank_"} GitHub
+        
+

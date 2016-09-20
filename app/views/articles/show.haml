@@ -1,0 +1,53 @@
+/ <p id="notice"><%= notice %></p>
+
+/ <p>
+/   <strong>Titre:</strong>
+/   <%= @article.titre %>
+/ </p>
+
+/ <p>
+/   <strong>Contenu:</strong>
+/   <%= @article.contenu %>
+/ </p>
+.row
+  .col.s12.m12.article-show
+    .card.white.darken-1
+      .card-content
+        .container
+          .card-title
+            - if current_user == @article.user
+              = link_to raw('<i class="large material-icons"> mode_edit</i>'), edit_article_path(@article), class: "edit-article-button btn-floating btn-large red"
+                
+            = @article.titre
+          .card-created-at
+            = "Par #{@article.user.email unless @article.user.nil?} le #{@article.created_at.strftime("%d %b. %Y à %Hh%M") }" 
+          %p.notice 
+            = notice
+          %p.alert 
+            = alert
+          %p
+            = @article.contenu
+          %section.commentaires
+            - if @article.commentaires.count == 0
+              %h5 Soyez le premier à commenter cet article !
+            -else
+              %h5 Commentaires
+            - i=0
+            - @article.commentaires.each do |commentaire|
+              - if @editable_commentaire == commentaire
+                = render partial: 'commentaires/edit', locals: { commentaire: @editable_commentaire}
+              -else
+                - i+=1
+                %div{class: "commentaire grey lighten-#{(i%2==0 )? 5 : 4}"}
+                  - commentaire_create_time = commentaire.created_at.strftime("%d %b. %Y à %Hh%M")
+                  - commentaire_update_time = commentaire.updated_at.strftime("%d %b. %Y à %Hh%M")
+                  = "#{commentaire.user.email unless commentaire.user.nil?} #{(commentaire_create_time == commentaire_update_time) ? "le "+ commentaire_create_time : "modifié le "+commentaire_update_time} :"
+                  - if current_user == commentaire.user
+                    = link_to raw('<i class="large material-icons">edit</i>'), edit_commentaire_path(commentaire), class: "edit-comment-button btn-floating btn-small grey"
+                    = link_to raw('<i class="large material-icons">clear</i>'), commentaire, method: :delete, data: {confirm: "Détruire ?"}, class: "delete-comment-button btn-floating btn-small grey"                    
+                  %br
+                  = commentaire.contenu
+                  
+
+            - if @editable_commentaire.nil?
+              = render partial: 'commentaires/form', locals: { commentaire: Commentaire.new }

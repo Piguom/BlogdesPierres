@@ -1,0 +1,7 @@
+== A material design blog
+
+Cette application ruby on rails et son API REST ont été développés dans le cadre d'un projet étudiant.
+
+Le but de ce projet était d'apprendre la programmation ruby en utilisant le framework ruby on rails.
+
+L'application est déployée sur l'url www.cloud.panachay.com

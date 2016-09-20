@@ -1,0 +1,17 @@
+.ajouter_article
+  = link_to raw('<i class="material-icons">add</i>'), new_article_path, class: "btn-floating btn-large waves-effect waves-light red right-align"
+
+.row
+- @articles.each do |article|
+  .col.s12.m4
+    .card.white.darken-1.hoverable
+      .card-content
+        .card-title.cardtitle.grey.lighten-5
+          = article.titre
+        %p
+          = "Ajouté le #{article.created_at.strftime("%d %b. %Y")} par #{article.user.email.split('@')[0] unless article.user.nil?}" 
+        .card-action
+          = link_to 'Lire', article, class: "waves-effect waves-yellow right-align"
+          - if article.user == current_user
+            = link_to 'Modifier', edit_article_path(article)
+            = link_to 'Supprimer', article, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }
