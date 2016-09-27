@@ -1,5 +1,5 @@
 class CommentairesController < ApplicationController
-
+ before_filter :authenticate_user!, except: [:index, :show]
   before_action :set_commentaire, only: [:destroy, :update, :note_up, :note_down]
   before_action :set_article, only: [:destroy, :update, :note_up, :note_down]
 

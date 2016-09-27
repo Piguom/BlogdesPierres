@@ -50,10 +50,10 @@ class ArticlesController < ApplicationController
 
     # Empêcher un utilisateur de supprimer un article qui ne lui appartient pas
     if auteur != current_user
+      redirect_to @article, notice: 'Cet article ne vous appartient pas'
+    else
       @article.destroy
       respond_with(@article)
-    else
-      redirect_to @article, notice: 'Cet article ne vous appartient pas'
     end
   end
 
