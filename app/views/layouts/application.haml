@@ -39,7 +39,9 @@
             =link_to 'Accueil', articles_path, class: "bold waves-effect waves-red"
           - unless current_user.nil?
             %li.bold
-              =link_to 'Mes articles', user_articles_path(current_user), class: "bold aves-effect waves-red"
+              =link_to 'Mes articles', user_articles_path(current_user), class: "bold waves-effect waves-red"
+            %li.bold
+              =link_to "Mon compte", current_user, class: "bold waves-effect waves-blue"
               
       .container#site
         .row

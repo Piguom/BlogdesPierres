@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     
   resources :articles
   resources :commentaires
+  resources :users, only: [:show]
 
   get '/:user/articles' => 'articles#user_articles', as: 'user_articles'
 end
