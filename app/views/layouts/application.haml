@@ -41,7 +41,7 @@
             %li.bold
               =link_to 'Mes articles', user_articles_path(current_user), class: "bold waves-effect waves-red"
             %li.bold
-              =link_to "Mon compte", current_user, class: "bold waves-effect waves-blue"
+              =link_to "Mon compte", user_path(current_user), class: "bold waves-effect waves-blue"
               
       .container#site
         .row
@@ -56,14 +56,14 @@
         .col.l4.s12
           %h5.grey-text.text-darken-1 A propos
           %p.grey-text Bienvenue sur notre toute première application web développée en ruby on Rails. Ce site a été réalisé dans le cadre d'un projet étudiant lors de notre 4ème année d'école d'ingénieurs à l'ESIEA.
-        .col.l2.s6
+        .col.l3.s6
           %h5.grey-text.text-darken-1 Nous suivre
-          %a.waves-effect.waves-light.btn{href: "https://github.com/piguom", target:"blank_"} GitHub 
+          %a.waves-effect.waves-light.btn{href: "https://github.com/piguom", target:"blank_"}Github <i class="material-icons">work</i>
         .col.l4.s6
           %h5.grey-text.text-darken-1 Sites personnels
-          %a.waves-effect.waves-light.btn{href: "http://www.pierre-roger.ovh", target:"blank_"} Pierre Roger
+          %a.waves-effect.waves-light.btn{href: "http://www.pierre-roger.ovh", target:"blank_"} Pierre Roger <i class="material-icons">card_travel</i>
           %br
           %br
-          %a.waves-effect.waves-light.btn{href: "http://www.pierre-frin.ovh", target:"blank_"} Pierre Frin
+          %a.waves-effect.waves-light.btn{href: "http://www.pierre-frin.ovh", target:"blank_"}Pierre Frin <i class="material-icons">card_travel</i>
         
 

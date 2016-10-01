@@ -15,5 +15,3 @@
 //= require turbolinks
 //= require_tree .
 //= require materialize-sprockets
-
- $(function() { alert("js inside haml"); }

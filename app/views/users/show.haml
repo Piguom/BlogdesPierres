@@ -1,0 +1,31 @@
+/<p>
+/Votre adresse mail :
+/  <%= @user.email %>
+/<br>
+/Votre mot de passe crypté :
+/  <%= @user.encrypted_password %>
+/<br>
+/Dernière connexion au site :
+/  <%= @user.last_sign_in_at %>
+/    <br>
+/    Nombre de connexion : 
+/    <%= @user.sign_in_count %>
+/</p>
+
+.row
+  .col.s12.m12.article-show
+    .card.white.darken-1
+      .card-content
+        .container
+          .card-title
+            = @user.email.split('@')[0]
+            
+          .card-created-at
+          %p.notice 
+            = notice
+          %p.alert 
+            = alert
+          %p
+            = "Dernière connexion : #{@user.last_sign_in_at}"
+          %p
+            = "Nombre de connexion : #{@user.sign_in_count}"
