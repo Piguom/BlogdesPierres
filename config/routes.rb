@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get '/:user/articles' => 'articles#user_articles', as: 'user_articles'
     get 'users' => 'users#form'
     post 'users' => 'users#create'
+
+
 end

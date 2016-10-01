@@ -11,6 +11,9 @@ class UsersController < ApplicationController
 
     def edit
         user = User.find(params[:id])
+        if @user
+            redirect_to edit_user_registrations_path, notice: "Ok modification"
+        end
     end
 
     def show
@@ -20,7 +23,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email,:nom,:prenom,:age,:adresse)
     end
-
-
-
 end

@@ -26,6 +26,12 @@
           %p.alert 
             = alert
           %p
+            = "Nom : #{@user.name}"
+          %p
+            = "Date d'anniversaire : #{@user.is_female}"
+          %p
             = "Dernière connexion : #{@user.last_sign_in_at}"
           %p
             = "Nombre de connexion : #{@user.sign_in_count}"
+          %p
+            = link_to raw('<i class="large material-icons"> mode_edit</i>'), edit_user_registration_path, class: "edit-article-button btn-floating btn-large red"
