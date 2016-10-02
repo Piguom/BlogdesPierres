@@ -18,7 +18,7 @@
       .card-content
         .container
           .card-title
-            = @user.email.split('@')[0]
+            = @user.email
             
           .card-created-at
           %p.notice 
@@ -26,12 +26,19 @@
           %p.alert 
             = alert
           %p
-            = "Nom : #{@user.name}"
-          %p
-            = "Date d'anniversaire : #{@user.is_female}"
-          %p
+          - if @user.surname.nil? && @user.name.nil?
+            = "Bonjour #{@user.email.split('@')[0]} "
+          - else
+            = "Bonjour #{@user.surname} #{@user.name}"
+          - if @user.is_female == false && @user.is_male == true
+            %br Vous êtes un homme né le #{@user.date_of_birth}
+          - else 
+            %br Vous êtes une femme née le #{@user.date_of_birth}
+          
+          %br
+          - if @user.is_female == false && @user.is_male == true
             = "Dernière connexion : #{@user.last_sign_in_at}"
-          %p
+          %br
             = "Nombre de connexion : #{@user.sign_in_count}"
-          %p
-            = link_to raw('<i class="large material-icons"> mode_edit</i>'), edit_user_registration_path, class: "edit-article-button btn-floating btn-large red"
+          %br
+            = link_to raw('<i class="large material-icons"> mode_edit</i>'), edit_user_registration_path, class: "edit-article-button btn-floating btn-large red" 

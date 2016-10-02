@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
     def edit
         user = User.find(params[:id])
+        @user = User.new(:date_of_birth => "2010-01-01".to_date)
         if @user
             redirect_to edit_user_registrations_path, notice: "Ok modification"
         end
@@ -18,9 +19,5 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-    end
-
-    def user_params
-      params.require(:user).permit(:email,:nom,:prenom,:age,:adresse)
     end
 end

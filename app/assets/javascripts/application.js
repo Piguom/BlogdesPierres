@@ -15,3 +15,16 @@
 //= require turbolinks
 //= require_tree .
 //= require materialize-sprockets
+
+$(document).on('click', function(){
+  $('#datetimepicker').datetimepicker({
+      pickTime: true,
+      useCurrent: true,
+      format: "DD-MM-YYYY",
+      autoclose: true,
+      todayBtn: true,
+      todayHighlight: true,
+      todayBtn: 'linked',
+      pickerPosition: "bottom-center"
+  });
+});

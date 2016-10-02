@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001141057) do
+ActiveRecord::Schema.define(version: 20161002124232) do
 
   create_table "articles", force: true do |t|
     t.string   "titre"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20161001141057) do
     t.string   "name"
     t.datetime "date_of_birth"
     t.boolean  "is_female",              default: false
+    t.boolean  "is_male",                default: false
+    t.string   "surname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

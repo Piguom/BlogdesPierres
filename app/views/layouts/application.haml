@@ -8,13 +8,17 @@
     = javascript_include_tag 'application'
   %body.grey.lighten-5
     - if current_user.nil? == false
-      - username = current_user.email.split('@')[0]
+      - username = current_user.name
       
     #main
       %header
         .nav.valign-wrapper
-          .container          
-            .waves-effect.waves-light.btn.grey.darken-1= link_to 'Deconnexion', destroy_user_session_path, id: "deconnexion"
+          .container
+            - if current_user.nil? == false
+              .waves-effect.waves-light.btn.grey.darken-1= link_to 'Deconnexion', destroy_user_session_path, id: "deconnexion"
+            - else                
+              = link_to 'Connexion', new_user_session_path, class: "waves-effect waves-light btn red darken-1", id: "button-connexion"              
+              = link_to 'Inscription', new_user_registration_path, class: "waves-effect waves-light btn", id: "button-connexion"
             %h2#title.center-align.white-text Blog des Pierres
             %br
             %br
@@ -28,10 +32,6 @@
           #connexion
             - if current_user.nil?
               %p Vous n'êtes pas connecté !
-              #deconnxion.display:none
-              = link_to 'Connexion', new_user_session_path, class: "waves-effect waves-light btn red darken-1", id: "button-connexion"
-              
-              = link_to 'Inscription', new_user_registration_path, class: "waves-effect waves-light btn", id: "button-connexion"
             - else
               %h5="Bienvenue #{username}"
               
