@@ -30,11 +30,9 @@
             = "Bonjour #{@user.email.split('@')[0]} "
           - else
             = "Bonjour #{@user.surname} #{@user.name}"
-          - if @user.is_female == false && @user.is_male == true
-            %br Vous êtes un homme né le #{@user.date_of_birth}
-          - else 
-            %br Vous êtes une femme née le #{@user.date_of_birth}
-          
+          - if @user.date_of_birth.nil? == false
+            %br Vous êtes né le #{@user.date_of_birth.strftime("%d %B %Y")}
+            
           %br
           - if @user.is_female == false && @user.is_male == true
             = "Dernière connexion : #{@user.last_sign_in_at}"
