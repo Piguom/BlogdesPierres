@@ -4,4 +4,4 @@ Cette application ruby on rails et son API REST ont été développés dans le c
 
 Le but de ce projet était d'apprendre la programmation ruby en utilisant le framework ruby on rails.
 
-L'application est déployée sur l'url www.cloud.panachay.com
+L'application est déployée sur l'url www.pierre-frin.ovh:3000
